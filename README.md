@@ -38,7 +38,7 @@
             <li>Locate to the project directory and make sure pip is installed on your machine</li>
             <li>Run the command "pip install --upgrade -r requirements.txt"   (Wait till this installs all the dependencies required for the project)</li>
          </ol>
-        <br><br>
+        <br>
         <b><ul><ins> Running the script which creates a Cron job: </ins></b></ul>
          <ol>
             <li>Locate to the project directory from the terminal and run the command "python scheduleCron.py"  (If to use executable instead of Script, please open the scheduleCron.py file and uncomment the 2 lines below "For Unix/Linux Environments" and comment the 3 lines below "For any Environments" and run the command given above)</li>
