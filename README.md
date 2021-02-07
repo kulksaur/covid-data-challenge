@@ -1,5 +1,8 @@
 <h2>COVID DATA CHALLENGE</h2>
 
+<p>This project is about fetching the Covid test related data for the New York state, and storing the required information into Database with a Multi-threaded approach. The solution is a python script which orchestrates all the process and runs periodically as a Cron Job. The solution also contains a Executable which can be used by Linux/Unix env users to either create a Cron Job or run as a Stand-alone script.</p>
+    
+----
 <h3><ins><b>Project includes:</b></ins></h3>
     <ol>
     <li><b>Source code</b></li>
@@ -29,7 +32,7 @@
             <li>Navigate to this folder from terminal and run the command "source activate" or just "./activate.sh" for Windows Users</li>
             <li>The virtual environment is now active! </li>
          </ol>
-         <br><br>
+         <br>
         <b><ul><ins> Install the dependencies: </ins></b></ul>
          <ol>
             <li>Locate to the project directory and make sure pip is installed on your machine</li>
@@ -41,8 +44,9 @@
             <li>Locate to the project directory from the terminal and run the command "python scheduleCron.py"  (If to use executable instead of Script, please open the scheduleCron.py file and uncomment the 2 lines below "For Unix/Linux Environments" and comment the 3 lines below "For any Environments" and run the command given above)</li>
             <li>Make sure you allow any permission pop-ups related to Crontab</li>
             <li>Verify that the CronJob has been scheduled using command "crontab -l", and you can see the command which is scheduled to run.</li>
+            <li>There will be a cron.log file which will be generated in the Project directory which will get updated with execution logs every time the Task in the Cron Job runs.
          </ol>
-    <br><br>
+    <br>
     <h4>For Windows users:</h4>
     
     
