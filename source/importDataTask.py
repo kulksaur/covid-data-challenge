@@ -8,15 +8,21 @@ from SQLiteThreadConnector import SQLiteThreadConnector
 
 # Fetch data from the URL
 def fetchDataFromApi(url):
-    context = ssl._create_unverified_context()
-    with request.urlopen(url, context=context) as response:
-        source  = response.read()
-        fetchDataResponse = json.loads(source)
+    try:
+        context = ssl._create_unverified_context()
+        with request.urlopen(url, context=context) as response:
+            source  = response.read()
+            fetchDataResponse = json.loads(source)
+    except Exception as ex:
+        raise Exception("Error in fetching data from the given URL with error: "+str(ex))
     return fetchDataResponse
 
 # Get and return all the Column list from the meta Object of Response
 def getAllColumnsFromResponse(metaObject):
-    columnObjectList = metaObject["view"]["columns"]
+    try:
+        columnObjectList = metaObject["view"]["columns"]
+    except Exception as ex:
+        raise Exception("Cannot find the view/columns field in the Meta Object of Response wit error: "+str(ex))
     columnNameList = []
     for column in columnObjectList:
         columnNameList.append(str(column["fieldName"]))
@@ -87,7 +93,10 @@ if __name__ == "__main__":
     fetchDataResponse = fetchDataFromApi("https://health.data.ny.gov/api/views/xdss-u53e/rows.json?accessType=DOWNLOAD")
     allColumnList = getAllColumnsFromResponse(fetchDataResponse["meta"])
     actualColumnStartIndex = len(allColumnList) - 6
-    dataObject = fetchDataResponse["data"]
+    try:
+        dataObject = fetchDataResponse["data"]
+    except Exception as ex:
+        raise Exception("Cannot find the 'data' object in the reponse data of the URL with error: "+str(ex))
     dataDictionary = constructRequiredDataDictionary(dataObject, allColumnList, actualColumnStartIndex)
     countyObjectMapping = getCountyObjectMapping(dataDictionary)
     dbConnection = getSQLiteConnection()
