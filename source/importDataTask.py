@@ -39,7 +39,7 @@ def getCountyObjectMapping(dataDictionary):
         rowData[0] = rowData[0].replace("T", " ")
         testDate = datetime.datetime.strptime(rowData[0], "%Y-%m-%d %H:%M:%S")
         currentDate = datetime.datetime.now()
-        if abs(currentDate - testDate).days == 2:
+        if abs(currentDate - testDate).days == 1:
             countyData = {}
             for index, row in enumerate(rowData):
                 countyData[dataDictionary["columns"][index]] = row
