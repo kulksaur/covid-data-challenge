@@ -27,18 +27,15 @@ def test_fetch_data_api_response(fetch_data_api_response):
 
 def test_get_all_columns_from_response(fetch_data_api_response):
     column_list = importDataTask.getAllColumnsFromResponse(fetch_data_api_response["meta"])
-    if len(column_list) > 0:
-        pytest.column_list = column_list
-        assert True
+    assert (len(column_list) > 0)
+    pytest.column_list = column_list
 
 def test_is_constructed_data_valid():
     actualColumnStartIndex = len(pytest.column_list) - 6
     constructed_data_dictionary  = importDataTask.constructRequiredDataDictionary(pytest.data_object, pytest.column_list, actualColumnStartIndex)
-    if (len(constructed_data_dictionary["columns"]) > 0 and len(constructed_data_dictionary["data"]) > 0):
-        pytest.constructed_data_dictionary = constructed_data_dictionary
-        assert True
+    assert (len(constructed_data_dictionary["columns"]) > 0 and len(constructed_data_dictionary["data"]) > 0)
+    pytest.constructed_data_dictionary = constructed_data_dictionary
 
 def test_county_object_mapping():
     countyObjectMapping = importDataTask.getCountyObjectMapping(pytest.constructed_data_dictionary)
-    if len(countyObjectMapping) > 0:
-        assert True
+    assert len(countyObjectMapping) > 0
